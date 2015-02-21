@@ -1,0 +1,18 @@
+# So my first task is to extract only the sequence from Ecuador and separate specimens into two different files : specimens from inter-Andean valleys and specimens from Hihglandas
+
+# Tha only thing we know in advance is that localities from highlands include: VoladeroCarchi, PolylepisCarchi,  ZuletaImbabura, PapallactaNapo. And localities from inter-Andean valleys include: JerusalemPichincha, ChotaImbabura, CasitaguaPichincha, BarrancasCotopaxi, TiglancochaChimborazo, BanosTungurahua, TababelaPichincha.
+
+#By knowing the names of the localities i can manage to make a function to extract the sequences from highlands, and valleys separately.
+
+#First I will call the file that content all my sequence as Mice.txt
+
+#This function will pick all the sequence from Inter-Andean valleys of Ecuador and see them into a new file 
+grep -e JerusalemPichincha -e ChotaImbabura -e CasitaguaPichincha -e BarrancasCotopaxi -e TiglancochaChimborazo -e BanosTungurahua -e TababelaPichincha Mice.txt > Inter-Andean_Valleys.txt
+
+# This function will pick all the sequence from highlands of Ecuador and see them into a new file 
+grep -e VoladeroCarchi -e PolylepisCarchi -e ZuletaImbabura -e PapallactaNapo Mice.txt > Hihglands.txt
+
+#There is a lot of lines at the beginning that we don't want, we can delete this lines by using the following function
+
+egrep -v "null" Inter-Andean_Valleys > valleys_Andes.txt
+egrep -v "null" Hihglands.txt > hihglands_Andes.txt
